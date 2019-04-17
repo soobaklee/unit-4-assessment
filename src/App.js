@@ -1,25 +1,41 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import CircleSelector from './components/CircleSelector/CircleSelector';
+import Circles from './components/Circles/Circles';
+
+const button = ['button1', 'button2', 'button3', 'button4']
+
 
 class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      selected: button[0]
+    }
+  }
+
+  handleChange = e => {
+    this.setState({ [e.target.name]: e.target.value })
+  }
+
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        <header className="App-header">UNIT 4 FINAL ASSESSMENT</header>
+        <main>
+          <CircleSelector
+            // {...props}
+            button={button}
+            handleChange={this.handleChange}
+            selected={this.state.selected}
+          />
+          <Circles
+            // {...props}
+            button={button}
+            handleChange={this.handleChange}
+            selected={this.state.selected}
+          />
+        </main>
       </div>
     );
   }
